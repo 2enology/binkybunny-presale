@@ -81,7 +81,7 @@ function MyApp({ Component, pageProps }: AppProps) {
               href="/imgs/logo.jpg"
               className="rounded-full"
             />
-            <title>RatWifHat Token Buy</title>
+            <title>BinkyBunny-Presale</title>
           </Head>
           <Layout>
             <Component {...pageProps} />
