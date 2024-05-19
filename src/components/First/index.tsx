@@ -2,10 +2,10 @@ import { Bounce, Fade } from "react-awesome-reveal";
 
 export const First = () => {
   return (
-    <section className="w-full bg-[#BCDFFB]  min-h-screen items-center justify-center flex bg-[url('/imgs/homeBackground.png')] bg-no-repeat bg-center bg-cover flex-col">
+    <section className="w-full bg-[#BCDFFB]  min-h-screen items-center justify-center flex bg-[url('/imgs/homeBackground.png')] bg-no-repeat bg-center bg-cover flex-col relative">
       <div
         className="w-full xl:max-w-[1200px] lg:max-w-[900px] flex p-3 relative flex-col animate__animated animate__fadeIn
-       "
+        z-[999]"
       >
         <div className="flex items-center justify-center gap-3 flex-col">
           <Bounce>
@@ -20,6 +20,12 @@ export const First = () => {
             >{`Buy now`}</button>
           </Bounce>
         </div>
+      </div>
+      <div className="absolute right-0">
+        <img
+          src="/imgs/background/back.png"
+          className="w-[650px] scale-x-[-1] scale-y-[1] transform  -z-[99]"
+        />
       </div>
     </section>
   );

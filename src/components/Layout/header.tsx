@@ -4,6 +4,7 @@ import { useRouter } from "next/router";
 import { MdClose } from "react-icons/md";
 import WalletConnectBtn from "../WalletConnectButton";
 import {
+  TbBrandDiscord,
   TbBrandTelegram,
   TbBrandTwitter,
   TbMenu,
@@ -37,7 +38,7 @@ const Header = () => {
           </ul>
           <div className="flex items-center justify-center gap-3">
             <div className="p-2 rounded-full bg-[#033FD5] border-black hover:shadow-black shadow-black shadow-sm hover:shadow-md duration-300 cursor-pointer">
-              <TbBrandTelegram color="white" />
+              <TbBrandDiscord color="white" />
             </div>
             <div className="p-2 rounded-full bg-[#033FD5] border-black hover:shadow-black hover:shadow-md shadow-black shadow-sm duration-300 cursor-pointer">
               <TbBrandTwitter color="white" />

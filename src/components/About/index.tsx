@@ -1,9 +1,9 @@
 /* eslint-disable @next/next/no-img-element */
-import { Slide } from "react-awesome-reveal";
+import { Fade, JackInTheBox, Slide, Zoom } from "react-awesome-reveal";
 export const About = () => {
   return (
     <section className="w-full bg-[#DAF3FF]  min-h-screen items-center justify-center flex flex-col relative">
-      <Slide>
+      <Slide className="z-[99]">
         <div className="w-full max-w-[1200px] flex p-3 relative flex-col animate__animated animate__fadeIn items-center gap-4">
           <div className="flex items-center justify-center gap-3 flex-col">
             <h1 className="xl:text-[100px] text-[50px] outlined-bold uppercase">{`About us`}</h1>
@@ -25,6 +25,20 @@ export const About = () => {
       <div className="w-full absolute -mb-2 bottom-0">
         <img src={"/imgs/about-shape.svg"} alt="shape" className="w-full" />
       </div>
+      <Fade>
+        <div className="absolute left-0 xl:top-0 lg:top-[140px] hidden lg:block">
+          <img
+            src="/imgs/background/back.png"
+            className="xl:w-[650px] w-[450px] transform  -z-[99]"
+          />
+        </div>
+        <div className="absolute right-0 xl:top-0 lg:top-[140px] hidden lg:block">
+          <img
+            src="/imgs/background/back.png"
+            className="xl:w-[650px] w-[450px] scale-x-[-1] scale-y-[1] transform  -z-[99]"
+          />
+        </div>
+      </Fade>
     </section>
   );
 };
