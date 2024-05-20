@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import Link from "next/link";
 import { Bounce, Fade } from "react-awesome-reveal";
 
@@ -27,7 +28,8 @@ export const First = () => {
       <div className="absolute right-0">
         <img
           src="/imgs/background/back.png"
-          className="w-[650px] scale-x-[-1] scale-y-[1] transform  -z-[99]"
+          className="w-[650px] scale-x-[-1] scale-y-[1] transform -z-[99]"
+          alt=""
         />
       </div>
     </section>

@@ -90,6 +90,38 @@ export function useBinky() {
     }
   };
 
+  const approveBunnyToken = async (amount: number) => {
+    try {
+      const etherAmount = ethers.utils.parseEther(amount.toString());
+      const valueToSend = BigInt(etherAmount.toString());
+      return await write({
+        address: BUNNYTOKEN_CONTRACT_ADDR,
+        abi: BUNNYTOKEN_CONTRACT_ABI as Abi,
+        functionName: "approve",
+        args: [TOKEN_AIRDROP_CONTRACT_ADDR, valueToSend],
+      });
+    } catch (e) {
+      console.log("error", e);
+      return null;
+    }
+  };
+
+  const payWithBunny = async (amount: number) => {
+    try {
+      const etherAmount = ethers.utils.parseEther(amount.toString());
+      const valueToSend = BigInt(etherAmount.toString());
+      return await write({
+        address: TOKEN_AIRDROP_CONTRACT_ADDR,
+        abi: TOKEN_AIRDROP_CONTRACT_ABI as Abi,
+        functionName: "payBunnyToClaimTokens",
+        args: [valueToSend],
+      });
+    } catch (e) {
+      console.log("error", e);
+      return null;
+    }
+  };
+
   const claimToken = async () => {
     try {
       return await write({
@@ -123,6 +155,8 @@ export function useBinky() {
     isAvailableTobuy,
     getUserData,
     payWithEth,
+    payWithBunny,
+    approveBunnyToken,
     claimToken,
     getBunnyTokenBalance,
     isTokenClaimable,

@@ -39,7 +39,7 @@ const Header = () => {
               />
             </Link>
           </div>
-          <ul className="items-center justify-center gap-8 md:flex hidden">
+          <ul className="items-center justify-center gap-8 lg:flex hidden">
             {menuData.map((data, index) => (
               <div onClick={() => router.push(data.path)} key={index}>
                 <li className="text-white outlined cursor-pointer text-xl font-bold hover:text-blue-400 duration-300">
@@ -66,13 +66,13 @@ const Header = () => {
                 <TbBrandWebflow color="white" />
               </div>
             </a>
+            <WalletConnectBtn />
             <div
-              className="cursor-pointer md:hidden"
+              className="cursor-pointer lg:hidden"
               onClick={() => setShowMenu(true)}
             >
               <TbMenu2 size={30} />
             </div>
-            <WalletConnectBtn />
           </div>
         </div>
       </div>

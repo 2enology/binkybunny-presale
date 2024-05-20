@@ -61,11 +61,11 @@ const GetTokenDataProvider: React.FC<GetTokenDataProviderProps> = ({
       console.log("data ===>", data);
 
       setUserData({
-        walletAddr: data.walletAddr,
+        walletAddr: data.walletAddress,
         ethPaidAmount: Number(data.ethPaidAmount) / 10 ** 18,
         bunnyPaidAmount: Number(data.bunnyPaidAmount) / 10 ** 18,
-        ethCanClaimAmount: Number(data.canClaimAmount) / 10 ** 18,
-        bunnyCanClaimAmount: Number(data.canClaimAmount) / 10 ** 18,
+        ethCanClaimAmount: Number(data.ethCanClaimAmount) / 10 ** 18,
+        bunnyCanClaimAmount: Number(data.bunnyCanClaimAmount) / 10 ** 18,
         ethClaimedState: data.ethClaimedState,
         bunnyClaimedState: data.bunnyClaimedState,
       });
