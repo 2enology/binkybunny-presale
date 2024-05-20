@@ -7,7 +7,7 @@ export const menuData = [
 
   {
     id: 2,
-    title: "How To Buy",
+    title: "Presale",
     path: "/#buy",
   },
   {

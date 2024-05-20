@@ -15,23 +15,24 @@ export const Tokenomics = () => {
       <Bounce>
         <div className="w-full xl:max-w-[1200px] flex p-3 relative justify-between animate__animated animate__fadeIn items-center gap-10 xl:flex-row flex-col">
           <div className="flex items-start justify-start my-5 flex-col gap-4 mt-[70px]">
-            <h1 className="xl:text-[100px] text-[50px] outlined-bold uppercase">{`Tokenomics`}</h1>
+					  <h1 className="xl:text-[100px] text-[50px] outlined-bold uppercase">{`Tokenomics`}</h1>
+					  <h1 className="xl:text-[50px] text-[25px]">{`Total Supply: 10B`}</h1>
             <div className="md:w-[550px] w-[350px] rounded-full bg-[#CBEFFF] h-[20px]">
-              <div className="w-[70%] bg-[#E16DDF] rounded-full h-full" />
+              <div className="w-[50%] bg-[#E16DDF] rounded-full h-full" />
             </div>
-            <h1 className="md:w-[550px] text-black text-2xl font-bold">{`70% LP`}</h1>
+            <h1 className="md:w-[550px] text-black text-2xl font-bold">{`50% Presale`}</h1>
             <div className="md:w-[550px] w-[350px] rounded-full bg-[#CBEFFF] h-[20px]">
-              <div className="w-[10%] bg-[#FED41D] rounded-full h-full" />
+              <div className="w-[25%] bg-[#FED41D] rounded-full h-full" />
             </div>
-            <h1 className="md:w-[550px] w-[350px] text-black text-2xl font-bold">{`10% Cex listing`}</h1>
+            <h1 className="md:w-[550px] w-[350px] text-black text-2xl font-bold">{`25% LP`}</h1>
             <div className="md:w-[550px] w-[350px] rounded-full bg-[#CBEFFF] h-[20px]">
-              <div className="w-[10%] bg-[#FA7C29] rounded-full h-full" />
+              <div className="w-[20%] bg-[#FA7C29] rounded-full h-full" />
             </div>
-            <h1 className="md:w-[550px] w-[350px] text-black text-2xl font-bold">{`10% marketing`}</h1>
+            <h1 className="md:w-[550px] w-[350px] text-black text-2xl font-bold">{`20% Staking rewards`}</h1>
             <div className="md:w-[550px] w-[350px] rounded-full bg-[#CBEFFF] h-[20px]">
-              <div className="w-[10%] bg-[#033FD5] rounded-full h-full" />
+              <div className="w-[5%] bg-[#033FD5] rounded-full h-full" />
             </div>
-            <h1 className="text-black text-2xl font-bold">{`10% Airdrop`}</h1>
+            <h1 className="text-black text-2xl font-bold">{`5% Airdrop`}</h1>
           </div>
           <div className=" md:w-[500px] w-full h-full p-10 relative bg-[#d9fdff4f] rounded-full border-2 border-white">
             <TokenomicsChart />

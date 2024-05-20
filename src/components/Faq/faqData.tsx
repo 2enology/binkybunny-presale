@@ -1,22 +1,22 @@
 export const FaqData = [
   {
-    title: "why monky?",
+    title: "why Binky Bunny?",
     content:
-      "The real question is : why not? $Monky is riding the waves of memecoins on the rising BASE blockchain. Moon is programmed.",
+      "The real question is : why not? $Binky is riding the waves of memecoins on the rising FLARE blockchain. Moon is programmed.",
   },
   {
     title: "what is the contract address?",
     content:
-      "The real question is : why not? $Monky is riding the waves of memecoins on the rising BASE blockchain. Moon is programmed.",
+      "$BINKY Contract Address: .",
   },
   {
-    title: "where can we buy?",
+    title: "why presale?",
     content:
-      "The real question is : why not? $Monky is riding the waves of memecoins on the rising BASE blockchain. Moon is programmed.",
+      "50% of presale funds will be added into seed liquidity and have enough liquidity & benefits our current NFTs & $BUNNY token holders.",
   },
   {
     title: "how can i contact the team?",
     content:
-      "The real question is : why not? $Monky is riding the waves of memecoins on the rising BASE blockchain. Moon is programmed.",
+      "\You can reach us via our discord/twitter channels.",
   },
 ];

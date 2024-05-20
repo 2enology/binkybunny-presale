@@ -3,14 +3,16 @@ import { Abi } from "viem";
 
 import { write, read } from "./utils";
 import {
+  BUNNYTOKEN_CONTRACT_ADDR,
   DEFAULT_GAS,
   DEFAULT_GAS_PRICE,
   TOKEN_AIRDROP_CONTRACT_ADDR,
 } from "../config";
 import TOKEN_AIRDROP_CONTRACT_ABI from "../../public/abis/token_airdrop.json";
+import BUNNYTOKEN_CONTRACT_ABI from "../../public/abis/bunnytoken.json";
 import { ethers } from "ethers";
 
-export function useRate() {
+export function useBinky() {
   const getTotalReceivedEthAmount = async () => {
     try {
       const contract: any = getContract({
@@ -33,7 +35,22 @@ export function useRate() {
         address: TOKEN_AIRDROP_CONTRACT_ADDR as `0x${string}`,
         abi: TOKEN_AIRDROP_CONTRACT_ABI as Abi,
       });
-      const res = await contract.read.isAvailableTobuy({
+      const res = await contract.read.isAvailableToBuy({
+        args: [],
+      });
+      return res;
+    } catch (error) {
+      return { isError: true, msg: error };
+    }
+  };
+
+  const isTokenClaimable = async () => {
+    try {
+      const contract: any = getContract({
+        address: TOKEN_AIRDROP_CONTRACT_ADDR as `0x${string}`,
+        abi: TOKEN_AIRDROP_CONTRACT_ABI as Abi,
+      });
+      const res = await contract.read.isTokenClaimable({
         args: [],
       });
       return res;
@@ -86,11 +103,28 @@ export function useRate() {
     }
   };
 
+  const getBunnyTokenBalance = async (address: string) => {
+    try {
+      const contract: any = getContract({
+        address: BUNNYTOKEN_CONTRACT_ADDR as `0x${string}`,
+        abi: BUNNYTOKEN_CONTRACT_ABI as Abi,
+      });
+      const res = await contract.read.balanceOf({
+        args: [address],
+      });
+      return res;
+    } catch (error) {
+      return { isError: true, msg: error };
+    }
+  };
+
   return {
     getTotalReceivedEthAmount,
     isAvailableTobuy,
     getUserData,
     payWithEth,
     claimToken,
+    getBunnyTokenBalance,
+    isTokenClaimable,
   };
 }

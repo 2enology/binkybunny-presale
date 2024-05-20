@@ -1,13 +1,17 @@
 export type UserDatas = {
   walletAddr: string;
-  claimedState: boolean;
-  canClaimAmount: number;
+  ethPaidAmount: number;
+  bunnyPaidAmount: number;
+  ethCanClaimAmount: number;
+  bunnyCanClaimAmount: number;
+  ethClaimedState: boolean;
+  bunnyClaimedState: boolean;
 };
 
 export type GetTokenDataContextValue = {
   isBuyState: boolean;
   ethBalanceOfContract: number;
   isClaimableForuser: boolean;
-  userData: UserDatas[] | undefined;
+  userData: UserDatas | undefined;
   getInfo: () => void;
 };

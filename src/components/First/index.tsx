@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { Bounce, Fade } from "react-awesome-reveal";
 
 export const First = () => {
@@ -9,15 +10,17 @@ export const First = () => {
       >
         <div className="flex items-center justify-center gap-3 flex-col">
           <Bounce>
-            <h1 className="xl:text-[150px] lg:text-[100px] text-[50px] md:text-[70px] outlined-bold">{`$BINKYBUNNY`}</h1>
+            <h1 className="xl:text-[140px] lg:text-[95px] text-[45px] md:text-[65px] outlined-bold">{`BINKY BUNNY`}</h1>
             <p className="text-white outlined font-bold md:text-3xl text-xl text-center">
-              {`The new generation of degen millionaires.`} <br />
-              {`Binkybunnys will conquer the memecoin world.`}
+              {`The new generation of memecoin by Doodle Bunny.`} <br />
+              {`$BINKY will conquer the memecoin world.`}
             </p>
-            <button
-              className="text-white bg-[#033FD5] px-7 py-3 rounded-full text-3xl outlined mt-[40px]
+            <Link href={"/presale"}>
+              <div
+                className="text-white bg-[#033FD5] px-7 py-3 rounded-full text-3xl outlined mt-[40px]
               shadow-black shadow-md hover:shadow-lg hover:shadow-black duration-300"
-            >{`Buy now`}</button>
+              >{`Presale Soon`}</div>
+            </Link>
           </Bounce>
         </div>
       </div>

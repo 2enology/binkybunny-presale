@@ -7,7 +7,7 @@ import { ClassicSpinner } from "react-spinners-kit";
 import { TbWorld, TbBrandTwitter, TbBrandTelegram } from "react-icons/tb";
 import { errorAlert, successAlert, warningAlert } from "../ToastGroup";
 import Countdown from "../CountDown";
-import { useRate } from "../../hooks/use-Rat";
+import { useBinky } from "../../hooks/use-binky";
 import { GetTokenDataContext } from "../../contexts/TokenDataContext";
 import {
   PRESALE_ENDED_TIME,
@@ -20,37 +20,37 @@ import {
 const Detail = () => {
   const { isBuyState, userData, getInfo, ethBalanceOfContract } =
     useContext(GetTokenDataContext);
-  const { payWithEth, claimToken } = useRate();
+  const { payWithEth, claimToken } = useBinky();
   const { address } = useAccount();
   const [balance, setBalance] = useState(0); // Initialize with a default value
   const [payAmount, setPayAmount] = useState(0);
   const [loading, setLoading] = useState(false);
 
-  const showClaimNoteState =
-    userData &&
-    address &&
-    userData[0]?.canClaimAmount !== undefined &&
-    userData[0]?.canClaimAmount !== 0;
-  const result = useBalance({
-    address: address,
-    chainId: flareTestnet.id,
-    scopeKey: "foo",
-    formatUnits: "ether",
-  });
+  // const showClaimNoteState =
+  //   userData &&
+  //   address &&
+  //   userData[0]?.canClaimAmount !== undefined &&
+  //   userData[0]?.canClaimAmount !== 0;
+  // const result = useBalance({
+  //   address: address,
+  //   chainId: flareTestnet.id,
+  //   scopeKey: "foo",
+  //   formatUnits: "ether",
+  // });
 
-  useEffect(() => {
-    if (result.data) {
-      try {
-        const formattedBalance = ethers.utils.formatUnits(
-          result.data.value.toString(),
-          "ether"
-        );
-        setBalance(Number(formattedBalance));
-      } catch (error) {
-        console.error("Error converting balance:", error);
-      }
-    }
-  }, [result.data]);
+  // useEffect(() => {
+  //   if (result.data) {
+  //     try {
+  //       const formattedBalance = ethers.utils.formatUnits(
+  //         result.data.value.toString(),
+  //         "ether"
+  //       );
+  //       setBalance(Number(formattedBalance));
+  //     } catch (error) {
+  //       console.error("Error converting balance:", error);
+  //     }
+  //   }
+  // }, [result.data]);
 
   const handleBuyFunc = async () => {
     try {

@@ -44,19 +44,19 @@ const Countdown: React.FC<CountdownProps> = ({ timestamp }) => {
       <p className="font-bold text-gray-800 text-[25px]">Presale Ends In</p>
       <div className="flex gap-5">
         <div className="flex flex-col gap-2 items-center justify-center">
-          <span className="bg-[#d24e4e] rounded-md bg-opacity-20 font-bold text-gray-800 p-5 text-[19px]">
+          <span className="bg-[#d24e4e] rounded-xl bg-opacity-20 font-bold text-gray-800 p-5 text-[19px]">
             {formatTimeUnit(timeLeft.days)}
           </span>
           <span className="text-[14px] font-semibold text-gray-800">Days</span>
         </div>
         <div className="flex flex-col gap-2 items-center justify-center">
-          <span className="bg-[#d24e4e] rounded-md bg-opacity-20 font-bold text-gray-800 p-5 text-[19px]">
+          <span className="bg-[#d24e4e] rounded-xl bg-opacity-20 font-bold text-gray-800 p-5 text-[19px]">
             {formatTimeUnit(timeLeft.hours)}
           </span>
           <span className="text-[14px] font-semibold text-gray-800">Hours</span>
         </div>
         <div className="flex flex-col gap-2 items-center justify-center">
-          <span className="bg-[#d24e4e] rounded-md bg-opacity-20 font-bold text-gray-800 p-5 text-[19px]">
+          <span className="bg-[#d24e4e] rounded-xl bg-opacity-20 font-bold text-gray-800 p-5 text-[19px]">
             {formatTimeUnit(timeLeft.minutes)}
           </span>
           <span className="text-[14px] font-semibold text-gray-800">
@@ -64,7 +64,7 @@ const Countdown: React.FC<CountdownProps> = ({ timestamp }) => {
           </span>
         </div>
         <div className="flex flex-col gap-2 items-center justify-center">
-          <span className="bg-[#d24e4e] rounded-md bg-opacity-20 font-bold text-gray-800 p-5 text-[19px]">
+          <span className="bg-[#d24e4e] rounded-xl bg-opacity-20 font-bold text-gray-800 p-5 text-[19px]">
             {formatTimeUnit(timeLeft.seconds)}
           </span>
           <span className="text-[14px] font-semibold text-gray-800">

@@ -2,10 +2,10 @@
 import * as React from "react";
 import { PieChart } from "react-minimal-pie-chart";
 const data = [
-  { label: "Group B", value: 700, color: "#E16DDF" },
-  { label: "Group A", value: 100, color: "#FED41D" },
-  { label: "Group C", value: 100, color: "#FA7C29" },
-  { label: "Group D", value: 100, color: "#033FD5" },
+  { label: "Group B", value: 500, color: "#E16DDF" },
+  { label: "Group A", value: 250, color: "#FED41D" },
+  { label: "Group C", value: 200, color: "#FA7C29" },
+  { label: "Group D", value: 50, color: "#033FD5" },
 ];
 // const sizing = {
 //   margin: { right: 10 },
