@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { TbMinus, TbPlus } from "react-icons/tb";
 import { FaqData } from "./faqData";
-import { Roll } from "react-awesome-reveal";
+import { Slide } from "react-awesome-reveal";
 
 interface OpenItemsState {
   [key: number]: boolean;
@@ -37,7 +37,7 @@ export const Faqs = () => {
         <div className="flex items-center justify-center gap-3 flex-col w-full">
           <h1 className="xl:text-[100px] text-[70px] outlined-bold uppercase">{`Faqs`}</h1>
         </div>
-        <Roll>
+        <Slide>
           {FaqData.map((data, index) => (
             <div
               className="lg:w-[950px] w-[350px] md:w-[600px] p-4 border-2 border-black bg-[#CBEFFF] rounded-2xl shadow-md shadow-black flex flex-col justify-center gap-4 relative cursor-pointer"
@@ -65,7 +65,7 @@ export const Faqs = () => {
               </div>
             </div>
           ))}
-        </Roll>
+        </Slide>
       </div>
     </section>
   );

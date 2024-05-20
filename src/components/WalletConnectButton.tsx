@@ -5,8 +5,10 @@ import { flareTestnet, xdc } from "wagmi/chains";
 import "animate.css";
 import { ethers } from "ethers";
 import { useEffect, useState } from "react";
+import { useRouter } from "next/router";
 
 const WalletConnectBtn = () => {
+  const router = useRouter();
   const { address } = useAccount();
   const [balance, setBalance] = useState(0); // Initialize with a default value
 
@@ -30,7 +32,11 @@ const WalletConnectBtn = () => {
   }, [result.data]);
 
   return (
-    <div className="flex items-center justify-center flex-col gap-[32px] animate__animated animate__fadeIn">
+    <div
+      className={`flex items-center justify-center flex-col gap-[32px] animate__animated animate__fadeIn ${
+        router.pathname !== "/presale" && "hidden"
+      }`}
+    >
       <ConnectButton.Custom>
         {({
           account,
@@ -67,8 +73,8 @@ const WalletConnectBtn = () => {
                     <button
                       onClick={openConnectModal}
                       type="button"
-                      className="text-white font-bold text-[13px] uppercase bg-gradient-to-r from-pink-500 to-pink-500 px-[10px] py-[13px]
-                       rounded-md"
+                      className="text-white font-bold text-[13px] uppercase bg-blue-700 px-[10px] py-[13px]
+                       rounded-full shadow-sm hover:shadow-md hover:shadow-black duration-300 shadow-black"
                     >
                       Connect Wallet
                     </button>
@@ -77,32 +83,38 @@ const WalletConnectBtn = () => {
 
                 if (chain.unsupported) {
                   return (
-                    <button onClick={openChainModal} type="button">
+                    <button
+                      onClick={openChainModal}
+                      type="button"
+                      className="text-white font-bold text-[13px] uppercase bg-pink-500 px-[10px] py-[13px]
+                    rounded-full shadow-sm hover:shadow-md hover:shadow-black duration-300 shadow-black"
+                    >
                       Wrong network
                     </button>
                   );
                 }
 
                 return (
-                  <div className="flex items-center gap-[20px]">
+                  <div className="flex items-center">
                     <button
                       onClick={openAccountModal}
                       type="button"
-                      className="text-black font-semibold text-[14px] uppercase bg-transparent px-[10px] py-[3px] gap-2
-                      rounded-lg border-[1.5px] border-pink-500 border-opacity-50 flex items-center justify-between"
+                      className="text-white font-bold text-[13px] uppercase bg-blue-700 w-[140px] py-[3px]
+                      rounded-full shadow-sm hover:shadow-md hover:shadow-black duration-300 shadow-black flex items-center justify-center gap-2"
                     >
                       <img
                         alt={chain.name ?? "Chain icon"}
-                        src={"/imgs/flare.png"}
+                        src={"/imgs/flareNetwork.png"}
                         style={{ width: 25, height: 25 }}
+                        className="rounded-full"
                       />
                       <div className="flex flex-col gap-[1px] justify-end items-end">
-                        <span className="text-[12px]">
+                        <span className="text-[16px]">
                           {account.displayName.slice(0, 4) +
                             "..." +
                             account.displayName.slice(-4)}
                         </span>
-                        <span className="text-[#E61A59] font-bold">
+                        <span className="text-white">
                           {balance.toFixed(2)} C2FLR
                         </span>
                       </div>

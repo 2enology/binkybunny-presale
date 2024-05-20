@@ -1,6 +1,6 @@
 import { ReactNode, createContext, useEffect, useState } from "react";
 import { useAccount, useBalance } from "wagmi";
-import { useRate } from "../hooks/use-Rat";
+import { useBinky } from "../hooks/use-binky";
 import { GetTokenDataContextValue, UserDatas } from "../types/dataType";
 import { ethers } from "ethers";
 import { flareTestnet } from "viem/chains";
@@ -21,11 +21,23 @@ const GetTokenDataProvider: React.FC<GetTokenDataProviderProps> = ({
   children,
 }) => {
   const { address } = useAccount();
-  const { getTotalReceivedEthAmount, isAvailableTobuy, getUserData } =
-    useRate();
+  const {
+    getTotalReceivedEthAmount,
+    isAvailableTobuy,
+    getUserData,
+    isTokenClaimable,
+  } = useBinky();
 
   const [totalReceivedEth, setTotalReceivedEth] = useState<string | number>(0);
-  const [userData, setUserData] = useState<UserDatas[]>();
+  const [userData, setUserData] = useState<UserDatas>({
+    walletAddr: "",
+    ethPaidAmount: 0,
+    bunnyPaidAmount: 0,
+    ethCanClaimAmount: 0,
+    bunnyCanClaimAmount: 0,
+    ethClaimedState: false,
+    bunnyClaimedState: false,
+  });
   const [isClaimableForuser, setIsClaimableForUser] = useState(false);
   const [isBuyState, setIsBuyState] = useState(true);
   const [ethBalanceOfContract, setEthBalanceOfContract] = useState(0);
@@ -42,22 +54,23 @@ const GetTokenDataProvider: React.FC<GetTokenDataProviderProps> = ({
     const formattedBalance = Number(state).toString();
     setTotalReceivedEth(formattedBalance);
     const buyState = await isAvailableTobuy();
+    console.log("buyState ===>", buyState);
     setIsBuyState(buyState);
     if (address) {
       const data = await getUserData(address);
-      const formattedBalance = Number(data.canClaimAmount).toString();
-      const newUserDatas = [
-        {
-          walletAddr: data.walletAddress,
-          claimedState: data.claimedState,
-          canClaimAmount: Number(formattedBalance) / 10 ** 18,
-        },
-      ];
-      setUserData(newUserDatas);
-      console.log("newUserDatas", newUserDatas);
+      console.log("data ===>", data);
+
+      setUserData({
+        walletAddr: data.walletAddr,
+        ethPaidAmount: Number(data.ethPaidAmount) / 10 ** 18,
+        bunnyPaidAmount: Number(data.bunnyPaidAmount) / 10 ** 18,
+        ethCanClaimAmount: Number(data.canClaimAmount) / 10 ** 18,
+        bunnyCanClaimAmount: Number(data.canClaimAmount) / 10 ** 18,
+        ethClaimedState: data.ethClaimedState,
+        bunnyClaimedState: data.bunnyClaimedState,
+      });
       setIsClaimableForUser(
-        newUserDatas[0].canClaimAmount !== 0 &&
-          newUserDatas[0].claimedState !== true
+        data.ethCanClaimAmount !== 0 && data.ethClaimedState !== true
       );
     }
     getEthBalanceOfCtr();
@@ -83,7 +96,15 @@ const GetTokenDataProvider: React.FC<GetTokenDataProviderProps> = ({
       return () => clearInterval(interval);
     } else {
       setIsClaimableForUser(false);
-      setUserData([]);
+      setUserData({
+        walletAddr: "",
+        ethPaidAmount: 0,
+        bunnyPaidAmount: 0,
+        ethCanClaimAmount: 0,
+        bunnyCanClaimAmount: 0,
+        ethClaimedState: false,
+        bunnyClaimedState: false,
+      });
     }
     // eslint-disable-next-line
   }, [address]);

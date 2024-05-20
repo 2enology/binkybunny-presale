@@ -12,22 +12,22 @@ export const Roadmap = () => {
             <h1 className="xl:text-[100px] text-[70px] outlined-bold uppercase">{`Roadmap`}</h1>
           </div>
           <div className="md:w-[450px] w-full p-4 border-2 border-black bg-[#CBEFFF] rounded-2xl shadow-md shadow-black flex flex-col justify-center gap-4">
-            <h1 className="text-[30px] text-center uppercase">{`phase 1 : meme`}</h1>
-            <h1 className="text-[30px] text-center uppercase">{`phase 2 : hold`}</h1>
-            <h1 className="text-[30px] text-center uppercase">{`phase 3 : more meme`}</h1>
+            <h1 className="text-[20px] text-center uppercase">{`phase 1 : Plan, Website, Announcement`}</h1>
+            <h1 className="text-[20px] text-center uppercase">{`phase 2 : Presale, Claim, Launch`}</h1>
+            <h1 className="text-[20px] text-center uppercase">{`phase 3 : Marketing, Staking`}</h1>
           </div>
         </div>
       </JackInTheBox>
       <Fade>
         <div className="absolute left-0 lg:top-[140px] hidden lg:block">
           <img
-            src="/imgs/background/back.png"
+            src="/imgs/roadmap.png"
             className="xl:w-[650px] w-[450px] transform  -z-[99]"
           />
         </div>
         <div className="absolute right-0 lg:top-[140px] hidden lg:block">
           <img
-            src="/imgs/background/back.png"
+            src="/imgs/roadmap.png"
             className="xl:w-[650px] w-[450px] scale-x-[-1] scale-y-[1] transform  -z-[99]"
           />
         </div>

@@ -4,14 +4,24 @@ import { useRouter } from "next/router";
 import { MdClose } from "react-icons/md";
 import WalletConnectBtn from "../WalletConnectButton";
 import {
+  PRESALE_ENDED_TIME,
+  SITE_LINK,
+  TELEGRAM_LINK,
+  TOTAL_ETH_AMOUNT,
+  TWITTER_LINK,
+} from "../../config";
+import {
   TbBrandDiscord,
   TbBrandTelegram,
   TbBrandTwitter,
+  TbBrandWebflow,
+  TbBrandWordpress,
   TbMenu,
   TbMenu2,
 } from "react-icons/tb";
 import { menuData } from "./menuData";
 import Image from "next/image";
+import Link from "next/link";
 
 const Header = () => {
   const [showMenu, setShowMenu] = useState(false);
@@ -21,11 +31,13 @@ const Header = () => {
       <div className="w-full xl:flex items-center justify-center border-opacity-5 p-1 bg-transparent backdrop-blur-sm fixed z-[9999] border-b-[1px] border-[#29292921] py-2">
         <div className="xl:w-[1200px] w-auto flex items-center justify-between px-3">
           <div className="flex items-center justify-center top-[24px] p-1 gap-3 border-[2px] border-[#00000042] rounded-full">
-            <img
-              src="/imgs/logo.jpg"
-              className="w-[50px] h-[50px] border-black rounded-full "
-              alt=""
-            />
+            <Link href="/">
+              <img
+                src="/imgs/logo.jpg"
+                className="w-[50px] h-[50px] border-black rounded-full "
+                alt=""
+              />
+            </Link>
           </div>
           <ul className="items-center justify-center gap-8 md:flex hidden">
             {menuData.map((data, index) => (
@@ -37,18 +49,30 @@ const Header = () => {
             ))}
           </ul>
           <div className="flex items-center justify-center gap-3">
-            <div className="p-2 rounded-full bg-[#033FD5] border-black hover:shadow-black shadow-black shadow-sm hover:shadow-md duration-300 cursor-pointer">
-              <TbBrandDiscord color="white" />
-            </div>
-            <div className="p-2 rounded-full bg-[#033FD5] border-black hover:shadow-black hover:shadow-md shadow-black shadow-sm duration-300 cursor-pointer">
-              <TbBrandTwitter color="white" />
-            </div>
+            <a href={TELEGRAM_LINK} target="_blank" rel="referrer">
+              {" "}
+              <div className="p-2 rounded-full bg-[#033FD5] border-black hover:shadow-black shadow-black shadow-sm hover:shadow-md duration-300 cursor-pointer">
+                <TbBrandDiscord color="white" />
+              </div>
+            </a>
+            <a href={TWITTER_LINK} target="_blank" rel="referrer">
+              <div className="p-2 rounded-full bg-[#033FD5] border-black hover:shadow-black hover:shadow-md shadow-black shadow-sm duration-300 cursor-pointer">
+                <TbBrandTwitter color="white" />
+              </div>
+            </a>
+            <a href={SITE_LINK} target="_blank" rel="referrer">
+              {" "}
+              <div className="p-2 rounded-full bg-[#033FD5] border-black hover:shadow-black hover:shadow-md shadow-black shadow-sm duration-300 cursor-pointer">
+                <TbBrandWebflow color="white" />
+              </div>
+            </a>
             <div
               className="cursor-pointer md:hidden"
               onClick={() => setShowMenu(true)}
             >
               <TbMenu2 size={30} />
             </div>
+            <WalletConnectBtn />
           </div>
         </div>
       </div>

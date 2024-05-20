@@ -7,8 +7,10 @@ export const BUY_AVAIABLE_PERCENT = 50;
 export const TOTAL_ETH_AMOUNT = 27600000;
 export const PRESALE_ENDED_TIME = 1811522800;
 export const TOKEN_AIRDROP_CONTRACT_ADDR =
-  "0xC6786d48aE8130d03B6BF2842143275c64321651";
+  "0x82C055A5fDe6BfE105F7D8E1863Ae029d2B707BC";
+export const BUNNYTOKEN_CONTRACT_ADDR =
+  "0x68A30EbDFf7cE1f8b6873BC27059A15f68B92c19";
 
-export const SITE_LINK = "https://ratwifhat.xyz/";
-export const TWITTER_LINK = "https://twitter.com/Ratwifcoin";
-export const TELEGRAM_LINK = "https://t.me/ratwifcoin";
+export const SITE_LINK = "https://doodlebunnyflr.live/";
+export const TWITTER_LINK = "https://twitter.com/Doodle_bunnies";
+export const TELEGRAM_LINK = "https://discord.com/invite/by23Jkpnjt";
