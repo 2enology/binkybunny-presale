@@ -29,13 +29,15 @@ export const About = () => {
         <div className="absolute left-0 xl:top-0 lg:top-[140px] hidden lg:block">
           <img
             src="/imgs/aboutleft.png"
-            className="xl:w-[650px] w-[450px] transform  -z-[99]"
+            className="xl:w-[650px] w-[450px] transform -z-[99]"
+            alt=""
           />
         </div>
         <div className="absolute right-0 xl:top-0 lg:top-[140px] hidden lg:block">
           <img
             src="/imgs/aboutleft.png"
             className="xl:w-[650px] w-[450px] scale-x-[-1] scale-y-[1] transform  -z-[99]"
+            alt=""
           />
         </div>
       </Fade>

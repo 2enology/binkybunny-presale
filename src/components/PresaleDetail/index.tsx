@@ -1,4 +1,5 @@
 "use client";
+/* eslint-disable @next/next/no-img-element */
 import dynamic from "next/dynamic";
 import { useContext, useEffect, useMemo, useState } from "react";
 import { flareTestnet } from "viem/chains";
@@ -15,8 +16,8 @@ const CountDown = dynamic(() => import("../../components/CountDown"), {
 
 export const PresaleDetail = () => {
   const { address } = useAccount();
-  const { getBunnyTokenBalance, payWithEth } = useBinky();
-  const { getInfo } = useContext(GetTokenDataContext);
+  const { getBunnyTokenBalance, payWithEth, approveBunnyToken } = useBinky();
+  const { getInfo, userData } = useContext(GetTokenDataContext);
   const [buyWithBunny, setBuyWithBunny] = useState(false);
   const [loading, setLoading] = useState(false);
   const [payAmount, setPayAmount] = useState(0);
@@ -71,25 +72,38 @@ export const PresaleDetail = () => {
     console.log("buy with eth");
     try {
       setLoading(true);
-      const rept = await payWithEth(payAmount);
+
+      const rept = await approveBunnyToken(payAmount);
       if (rept === null) {
         warningAlert("Rejected by User!");
-      } else {
         setLoading(false);
-        successAlert("Paid Successfully.");
+      } else {
+        try {
+          const rept = await payWithEth(payAmount);
+          if (rept === null) {
+            warningAlert("Rejected by User!");
+          } else {
+            setLoading(false);
+            successAlert("Paid Successfully.");
+          }
+        } catch (error: any) {
+          if (error.message.includes("User rejected the request.")) {
+            setLoading(false);
+            errorAlert("User rejected the request.");
+          } else {
+            console.log("error", error);
+            setLoading(false);
+            errorAlert("Failed Paid");
+          }
+        } finally {
+          setLoading(false);
+          getInfo();
+        }
       }
     } catch (error: any) {
-      if (error.message.includes("User rejected the request.")) {
-        setLoading(false);
-        errorAlert("User rejected the request.");
-      } else {
-        console.log("error", error);
-        setLoading(false);
-        errorAlert("Failed Paid");
-      }
-    } finally {
+      console.log("error", error);
       setLoading(false);
-      getInfo();
+      errorAlert("Failed Paid");
     }
   };
   const handleBuyWithBunnyFunc = async () => {
@@ -104,8 +118,10 @@ export const PresaleDetail = () => {
     setLoading(true);
   };
 
+  console.log("userData ==================>", userData);
+
   return (
-    <div className="flex items-start justify-center  border-2 border-black bg-[#BCDAFC] rounded-2xl flex-col p-3 w-[600px] shadow-md shadow-black relative overflow-hidden">
+    <div className="flex items-start justify-center  border-2 border-black bg-[#BCDAFC] rounded-2xl flex-col p-3 md:w-[600px] w-full shadow-md shadow-black relative overflow-hidden">
       <div className="absolute top-2 right-2 flex items-center justify-center gap-1 z-40">
         <span className="text-blue-800 uppercase"> Flr</span>
         <label className="switch">
@@ -124,6 +140,7 @@ export const PresaleDetail = () => {
         <img
           src="/imgs/background/back.png"
           className="w-full scale-x-[-1] scale-y-[1] transform opacity-10 -z-[1]"
+          alt=""
         />
       </div>
       <div className="w-full flex items-center justify-center mt-10">
@@ -198,18 +215,36 @@ export const PresaleDetail = () => {
         >
           {!buyWithBunny ? "Buy FLR" : "Buy bunny"}
         </div>{" "}
-        <div
-          className={`text-white text-center ${
-            !buyWithBunny ? "bg-[#033FD5]" : "bg-[#ea47b4]"
-          } px-3 py-2 rounded-full text-xl outlined cursor-pointer
-          shadow-black shadow-sm hover:shadow-md hover:shadow-black duration-300 uppercase`}
-          onClick={
-            !buyWithBunny ? handleClaimWithFlrFunc : handleClaimWithBunnyFunc
-          }
+        <div className="relative">
+          <div
+            className={`text-white text-center ${
+              !buyWithBunny ? "bg-[#033FD5]" : "bg-[#ea47b4]"
+            } px-3 py-2 rounded-full text-xl outlined cursor-pointer
+          shadow-black shadow-sm hover:shadow-md hover:shadow-black duration-300 uppercase relative`}
+            onClick={
+              !buyWithBunny ? handleClaimWithFlrFunc : handleClaimWithBunnyFunc
+            }
+          >
+            {!buyWithBunny ? "Claim FLR" : "Claim bunny"}
+          </div>{" "}
+          {!userData?.ethClaimedState && (
+            <div className="absolute top-0 left-0 right-0 bottom-0 bg-white bg-opacity-20 backdrop-blur-md rounded-full cursor-not-allowed" />
+          )}
+        </div>
+      </div>
+      <div className="w-full flex items-center justify-center">
+        <p
+          className={` ${
+            !buyWithBunny ? "text-[#033FD5]" : "text-[#ea47b4]"
+          } font-bold md:text-2xl text-xl text-center my-5 animate-pulse`}
         >
-          {" "}
-          {!buyWithBunny ? "Claim FLR" : "Claim bunny"}
-        </div>{" "}
+          {`You can claim ${
+            !buyWithBunny
+              ? userData?.ethCanClaimAmount
+              : userData?.bunnyCanClaimAmount
+          } $Binky!`}{" "}
+          <br />
+        </p>
       </div>
       <div
         className={`absolute top-0 bottom-0 left-0 right-0 flex items-center justify-center bg-white bg-opacity-20 backdrop-blur-md z-[9999]

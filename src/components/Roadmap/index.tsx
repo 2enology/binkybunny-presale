@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import { Fade, JackInTheBox } from "react-awesome-reveal";
 
 export const Roadmap = () => {
@@ -22,13 +23,15 @@ export const Roadmap = () => {
         <div className="absolute left-0 lg:top-[140px] hidden lg:block">
           <img
             src="/imgs/roadmap.png"
-            className="xl:w-[650px] w-[450px] transform  -z-[99]"
+            className="xl:w-[650px] w-[450px] transform -z-[99]"
+            alt=""
           />
         </div>
         <div className="absolute right-0 lg:top-[140px] hidden lg:block">
           <img
             src="/imgs/roadmap.png"
             className="xl:w-[650px] w-[450px] scale-x-[-1] scale-y-[1] transform  -z-[99]"
+            alt=""
           />
         </div>
       </Fade>
