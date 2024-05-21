@@ -20,18 +20,18 @@ export const First = () => {
               <div
                 className="text-white bg-[#033FD5] px-7 py-3 rounded-full text-3xl outlined mt-[40px]
               shadow-black shadow-md hover:shadow-lg hover:shadow-black duration-300"
-              >{`Presale Soon`}</div>
+              >{`Presale Now`}</div>
             </Link>
           </Bounce>
         </div>
       </div>
-      <div className="absolute right-0">
+      <Fade className="absolute right-0">
         <img
           src="/imgs/background/back.png"
           className="w-[650px] scale-x-[-1] scale-y-[1] transform -z-[99]"
           alt=""
         />
-      </div>
+      </Fade>
     </section>
   );
 };

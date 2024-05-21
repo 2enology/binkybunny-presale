@@ -122,12 +122,25 @@ export function useBinky() {
     }
   };
 
-  const claimToken = async () => {
+  const claimBunnyTokens = async () => {
     try {
       return await write({
         address: TOKEN_AIRDROP_CONTRACT_ADDR,
         abi: TOKEN_AIRDROP_CONTRACT_ABI as Abi,
-        functionName: "claimTokens",
+        functionName: "claimBunnyTokens",
+      });
+    } catch (e) {
+      console.log("error", e);
+      return null;
+    }
+  };
+
+  const claimEthTokens = async () => {
+    try {
+      return await write({
+        address: TOKEN_AIRDROP_CONTRACT_ADDR,
+        abi: TOKEN_AIRDROP_CONTRACT_ABI as Abi,
+        functionName: "claimEthTokens",
       });
     } catch (e) {
       console.log("error", e);
@@ -157,7 +170,8 @@ export function useBinky() {
     payWithEth,
     payWithBunny,
     approveBunnyToken,
-    claimToken,
+    claimBunnyTokens,
+    claimEthTokens,
     getBunnyTokenBalance,
     isTokenClaimable,
   };

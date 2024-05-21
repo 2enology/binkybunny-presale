@@ -41,7 +41,7 @@ const Countdown: React.FC<CountdownProps> = ({ timestamp }) => {
 
   return (
     <div className="flex items-center justify-center flex-col gap-5">
-      <p className="font-bold text-gray-800 text-[25px]">Presale Ends In</p>
+      <p className="font-bold text-gray-800 text-[35px]">Presale Ends In</p>
       <div className="flex gap-5">
         <div className="flex flex-col gap-2 items-center justify-center">
           <span className="bg-[#d24e4e] rounded-xl bg-opacity-20 font-bold text-gray-800 p-5 text-[19px]">
