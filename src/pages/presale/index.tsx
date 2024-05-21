@@ -16,7 +16,7 @@ const Presale = () => {
       <div className="w-full bg-[#BCDFFB]  min-h-screen items-center justify-center flex bg-[url('/imgs/homeBackground.png')] bg-no-repeat bg-center bg-cover flex-col relative">
         <div
           className="w-full xl:max-w-[900px] lg:max-w-[900px] flex p-3 relative flex-col animate__animated animate__fadeIn
-        items-center justify-center z-[999] gap-5 mt-10"
+        items-center justify-center z-[999] gap-5 md:mt-10 mt-[100px]"
         >
           <div className="flex items-center justify-center gap-3 flex-col">
             <Bounce>

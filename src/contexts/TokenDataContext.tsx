@@ -54,11 +54,9 @@ const GetTokenDataProvider: React.FC<GetTokenDataProviderProps> = ({
     const formattedBalance = Number(state).toString();
     setTotalReceivedEth(formattedBalance);
     const buyState = await isAvailableTobuy();
-    console.log("buyState ===>", buyState);
     setIsBuyState(buyState);
     if (address) {
       const data = await getUserData(address);
-      console.log("data ===>", data);
 
       setUserData({
         walletAddr: data.walletAddress,
@@ -96,15 +94,6 @@ const GetTokenDataProvider: React.FC<GetTokenDataProviderProps> = ({
       return () => clearInterval(interval);
     } else {
       setIsClaimableForUser(false);
-      setUserData({
-        walletAddr: "",
-        ethPaidAmount: 0,
-        bunnyPaidAmount: 0,
-        ethCanClaimAmount: 0,
-        bunnyCanClaimAmount: 0,
-        ethClaimedState: false,
-        bunnyClaimedState: false,
-      });
     }
     // eslint-disable-next-line
   }, [address]);

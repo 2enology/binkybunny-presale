@@ -48,21 +48,21 @@ const Header = () => {
               </div>
             ))}
           </ul>
-          <div className="flex items-center justify-center gap-3">
+          <div className=" items-center justify-center gap-3 flex">
             <a href={TELEGRAM_LINK} target="_blank" rel="referrer">
               {" "}
-              <div className="p-2 rounded-full bg-[#033FD5] border-black hover:shadow-black shadow-black shadow-sm hover:shadow-md duration-300 cursor-pointer">
+              <div className="p-2 rounded-full bg-[#033FD5] border-black hover:shadow-black shadow-black shadow-sm hover:shadow-md duration-300 cursor-pointer hidden md:block">
                 <TbBrandDiscord color="white" />
               </div>
             </a>
             <a href={TWITTER_LINK} target="_blank" rel="referrer">
-              <div className="p-2 rounded-full bg-[#033FD5] border-black hover:shadow-black hover:shadow-md shadow-black shadow-sm duration-300 cursor-pointer">
+              <div className="p-2 rounded-full bg-[#033FD5] border-black hover:shadow-black hover:shadow-md shadow-black shadow-sm duration-300 cursor-pointer hidden md:block">
                 <TbBrandTwitter color="white" />
               </div>
             </a>
             <a href={SITE_LINK} target="_blank" rel="referrer">
               {" "}
-              <div className="p-2 rounded-full bg-[#033FD5] border-black hover:shadow-black hover:shadow-md shadow-black shadow-sm duration-300 cursor-pointer">
+              <div className="p-2 rounded-full bg-[#033FD5] border-black hover:shadow-black hover:shadow-md shadow-black shadow-sm duration-300 cursor-pointer hidden md:block">
                 <TbBrandWebflow color="white" />
               </div>
             </a>
@@ -100,6 +100,25 @@ const Header = () => {
               </li>
             </div>
           ))}
+          <div className="flex items-center justify-center gap-3">
+            <a href={TELEGRAM_LINK} target="_blank" rel="referrer">
+              {" "}
+              <div className="p-2 rounded-full bg-[#033FD5] border-black hover:shadow-black shadow-black shadow-sm hover:shadow-md duration-300 cursor-pointer">
+                <TbBrandDiscord color="white" />
+              </div>
+            </a>
+            <a href={TWITTER_LINK} target="_blank" rel="referrer">
+              <div className="p-2 rounded-full bg-[#033FD5] border-black hover:shadow-black hover:shadow-md shadow-black shadow-sm duration-300 cursor-pointer">
+                <TbBrandTwitter color="white" />
+              </div>
+            </a>
+            <a href={SITE_LINK} target="_blank" rel="referrer">
+              {" "}
+              <div className="p-2 rounded-full bg-[#033FD5] border-black hover:shadow-black hover:shadow-md shadow-black shadow-sm duration-300 cursor-pointer">
+                <TbBrandWebflow color="white" />
+              </div>
+            </a>
+          </div>
         </div>
       )}
     </>

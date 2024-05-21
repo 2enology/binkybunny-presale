@@ -182,7 +182,7 @@ video {
   right: 0;
   bottom: 0;
   background-color: #1d4ed8;
-  border-radius: 10px;
+  border-radius: 20px;
   -webkit-transition: 0.4s;
   transition: 0.4s;
 }
@@ -194,7 +194,7 @@ video {
   width: 26px;
   left: 4px;
   bottom: 4px;
-  border-radius: 10px;
+  border-radius: 50px;
   background-color: white;
   -webkit-transition: 0.4s;
   transition: 0.4s;
