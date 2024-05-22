@@ -83,6 +83,7 @@ export const PresaleDetail = () => {
       warningAlert("Please input the value");
     } else {
       try {
+        setLoading(true);
         const rept = await payWithEth(payAmount);
         if (rept === null) {
           warningAlert("Rejected by User!");
@@ -238,7 +239,13 @@ export const PresaleDetail = () => {
           placeholder="0"
           type="number"
           onChange={(e) =>
-            Number(e.target.value) > Number((balance - 0.01).toFixed(3))
+            Number(e.target.value) >
+            Number(
+              (!buyWithBunny
+                ? balance
+                : bunnyTokenBalance - (!buyWithBunny ? 0.01 : 0)
+              ).toFixed(3)
+            )
               ? !buyWithBunny
                 ? setPayAmount(Number((balance - 0.01).toFixed(3)))
                 : setPayAmount(bunnyTokenBalance)
@@ -292,19 +299,29 @@ export const PresaleDetail = () => {
             <div className="absolute top-0 left-0 right-0 bottom-0 bg-white bg-opacity-20 backdrop-blur-md rounded-full cursor-not-allowed" />
           )}
         </div>
-        <div className="relative">
+        <div className={`relative ${buyWithBunny && "hidden"}`}>
           <div
-            className={`text-white text-center ${
-              !buyWithBunny ? "bg-[#033FD5]" : "bg-[#ea47b4]"
-            } px-3 py-2 rounded-full md:text-xl text-md outlined cursor-pointer
+            className={`text-white text-center
+              bg-[#033FD5] px-3 py-2 rounded-full md:text-xl text-md outlined cursor-pointer
           shadow-black shadow-sm hover:shadow-md hover:shadow-black duration-300 uppercase relative`}
-            onClick={
-              !buyWithBunny ? handleClaimWithFlrFunc : handleClaimWithBunnyFunc
-            }
+            onClick={handleClaimWithFlrFunc}
           >
             {!buyWithBunny ? "Claim FLR" : "Claim bunny"}
           </div>{" "}
-          {isBuyState && (
+          {(isBuyState || userData?.ethClaimedState) && (
+            <div className="absolute top-0 left-0 right-0 bottom-0 bg-white bg-opacity-20 backdrop-blur-md rounded-full cursor-not-allowed" />
+          )}
+        </div>
+        <div className={`relative ${!buyWithBunny && "hidden"}`}>
+          <div
+            className={`text-white text-center bg-[#ea47b4]
+             px-3 py-2 rounded-full md:text-xl text-md outlined cursor-pointer
+          shadow-black shadow-sm hover:shadow-md hover:shadow-black duration-300 uppercase relative`}
+            onClick={handleClaimWithBunnyFunc}
+          >
+            {!buyWithBunny ? "Claim FLR" : "Claim bunny"}
+          </div>{" "}
+          {(isBuyState || userData?.bunnyClaimedState) && (
             <div className="absolute top-0 left-0 right-0 bottom-0 bg-white bg-opacity-20 backdrop-blur-md rounded-full cursor-not-allowed" />
           )}
         </div>
