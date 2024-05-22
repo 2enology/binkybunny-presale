@@ -191,6 +191,8 @@ export const PresaleDetail = () => {
     }
   };
 
+  console.log("userData", userData);
+
   return (
     <div className="flex items-start justify-center  border-2 border-black bg-[#BCDAFC] rounded-2xl flex-col p-3 md:w-[600px] w-full shadow-md shadow-black relative overflow-hidden">
       <div className="absolute top-2 right-2 flex items-center justify-center gap-1 z-40">
@@ -325,6 +327,22 @@ export const PresaleDetail = () => {
             <div className="absolute top-0 left-0 right-0 bottom-0 bg-white bg-opacity-20 backdrop-blur-md rounded-full cursor-not-allowed" />
           )}
         </div>
+      </div>
+      <div className="w-full flex items-center justify-center">
+        <p
+          className={` ${
+            userData?.ethClaimedState && !buyWithBunny ? "block" : "hidden"
+          } text-[#033FD5] font-bold md:text-2xl text-xl text-center my-5`}
+        >
+          {`You have already claimd $Binky!`}
+        </p>
+        <p
+          className={` ${
+            userData?.bunnyClaimedState && buyWithBunny ? "block" : "hidden"
+          } text-[#ea47b4] font-bold md:text-2xl text-xl text-center my-5`}
+        >
+          {`You have already claimd $Binky!`}
+        </p>
       </div>
       <div
         className={`w-full flex items-center justify-center ${
