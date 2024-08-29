@@ -28,3 +28,23 @@ The funds raised during the presale will be allocated as follows:
 - Next.js: Framework used for the web application.
 - TypeScript: For type-safe JavaScript.
 - Tailwind CSS: For styling the user interface.
+## Setup Instructions
+1. Clone the repository:
+```bash
+git clone https://github.com/2enology/binkybunny-presale/
+cd binky-presale
+# or
+yarn start
+```
+2. Install dependencies
+```bash
+npm install
+# or
+yarn install
+```
+3. Run the application:
+```bash
+npm run dev
+# or
+yarn dev
+``` 
