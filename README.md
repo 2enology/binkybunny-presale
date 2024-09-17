@@ -33,8 +33,6 @@ The funds raised during the presale will be allocated as follows:
 ```bash
 git clone https://github.com/2enology/binkybunny-presale/
 cd binky-presale
-# or
-yarn start
 ```
 2. Install dependencies
 ```bash
